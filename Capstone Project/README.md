@@ -93,7 +93,7 @@ Dimension tables:
 * Clearly state the rationale for the choice of tools and technologies for the project.
     * The fact table is the majority component in the database, so it is more efficient to store a shortened version of variables in it and link the detailed descriptions in seperate dimension tables. This is an ideal use case of the STAR-schema, where the storage of duplicated information is avoided. Tables are connected via indices (bold in the tables and figures above), and they can be joined together to generate more complex insights. For example, if a data scientist would like to know which country has the most incoming F1 student, (s)he can query
     
-    ````
+    ```
     SELECT 
         c.country_name AS Country, 
         SUM(i.visatype=1) AS Students 
