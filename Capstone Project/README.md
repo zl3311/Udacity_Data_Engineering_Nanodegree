@@ -96,7 +96,7 @@ Dimension tables:
     ```
     SELECT 
         c.country_name AS Country, 
-        SUM(i.visatype=3) AS Students 
+        SUM(i.visatype='F1') AS Students 
     FROM fact_immigration i 
     JOIN dim_country c 
     ON i.i94cit = c.country_code 
