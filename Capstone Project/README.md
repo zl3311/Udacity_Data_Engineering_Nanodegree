@@ -91,7 +91,19 @@ Dimension tables:
     
 ### Step 5: Complete Project Write Up
 * Clearly state the rationale for the choice of tools and technologies for the project.
-    * Since the size of I94 data is really large, I'm using Apache Spark for processing. The other datasets are much smaller, I'm simply using pandas for processing.
+    * The fact table is the majority component in the database, so it is more efficient to store a shortened version of variables in it and link the detailed descriptions in seperate dimension tables. This is an ideal use case of the STAR-schema, where the storage of duplicated information is avoided. Tables are connected via indices (bold in the tables and figures above), and they can be joined together to generate more complex insights. For example, if a data scientist would like to know which country has the most incoming F1 student, (s)he can query
+    
+    ````
+    SELECT 
+        c.country_name AS Country, 
+        SUM(i.visatype=1) AS Students 
+    FROM fact_immigration i 
+    JOIN dim_country c 
+    ON i.i94cit = c.country_code 
+    GROUP BY Country 
+    ORDER BY Students DESC LIMIT 1
+    ```
+
     * I'm saving processed data as ```.parquet``` format in S3 bucket storage, because the columnar storage format of ```.parquet``` files would significantly boost the access speed of queries and S3 works natively well with Redshift. 
     * Redshift is a power tool for data warehousing. It is scalable, distributed and cost-effective, and it is ideal to host the DB on it.
 * Propose how often the data should be updated and why.
