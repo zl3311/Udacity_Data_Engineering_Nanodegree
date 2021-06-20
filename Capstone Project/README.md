@@ -15,7 +15,7 @@ The project follows the follow steps:
 
 The goal of this project is to construct the immigration database system efficiently, such that the the query of needed information is retrieved quickly. I worked with four dataset specifically. 
 
-- I94 Immigration: This dataset is provided by Udacity, which contains > 1 million rows and is "big". It contains information about foreigners who have entered the U.S. without their P.I.I.. I'm using this table as the main fact table and connect other dimension tables to it. Since it's too big and the budget for the created AWS account is limited, I'm only using student visa (F1) records only. 
+- I94 Immigration: This dataset is provided by Udacity, which contains > 3 million rows and is "big". It contains information about foreigners who have entered the U.S. without their P.I.I.. I'm using this table as the main fact table and connect other dimension tables to it. Since it's too big and the budget for the created AWS account is limited, I'm only using student visa (F1) records only. 
 - US city demographic: This dataset is also proviced by Udacity, and it contains city-level demographic distributions of U.S.. I aggregated it to the level of **state** and connected it with the entering state of I94 records.
 - Country code: This dataset is extracted from the given I94 label ```.SAS``` file, which contains the corresponding information of the country code used by the I94 immigration dataset.
 - Visa definition: This dataset is collected from [here](https://www.trade.gov/i-94-arrivals-program), which contains the definitions of different visa types of the I94 immigration dataset.
